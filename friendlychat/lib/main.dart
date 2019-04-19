@@ -81,7 +81,26 @@ class _ChatScreenState extends State<ChatScreen> {
           'Friendly Chat',
         ),
       ),
-      body: _buildTextComposer(),
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            child: ListView.builder(
+              padding: EdgeInsets.all(8.0),
+              itemCount: _messages.length,
+              itemBuilder: (context, index) {
+                return _messages[index];
+              },
+            ),
+          ),
+          Divider(height: 1.0),
+          Container(
+            child: _buildTextComposer(),
+            decoration: BoxDecoration(
+              color: Theme.of(context).cardColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -96,7 +115,6 @@ class ChatMessage extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
             margin: const EdgeInsets.only(right: 16.0),
@@ -118,7 +136,7 @@ class ChatMessage extends StatelessWidget {
                 child: Text(text),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
