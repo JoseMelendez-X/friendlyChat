@@ -1,1 +1,1 @@
-# friendlyChat
+# Friendly Chat
